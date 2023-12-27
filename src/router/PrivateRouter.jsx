@@ -1,10 +1,11 @@
 import { Navigate,Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useLogin } from "../context/LoginProvider";
 const PrivateRouter = () => {
-  const user = true;
+  const {user} = useLogin();
   return (
     <>
-      {user ? (
+      {user.email && user.password ? (
         <>
           <Navbar />
           <Outlet />
