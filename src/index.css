@@ -8,4 +8,22 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    
+}
+@media (max-width:400px){
+    .xs{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .maxw{
+        min-width: 300px;
+    }
+
+}
+@media (min-width: 401px) and (max-width: 650px) {
+    .slice{
+        flex-basis: 30%;
+    }
+    
 }
