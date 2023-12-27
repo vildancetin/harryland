@@ -12,7 +12,10 @@ const LoginProvider = ({ children }) => {
 //   ? after login navigate to home page
   const login = (userInfo) => {
     setUser(userInfo);
-    navigate("/home");
+    setTimeout(() => {
+      
+      navigate("/home");
+    }, 1000);
   };
 // ? save to session storage
   useEffect(() => {
