@@ -6,25 +6,25 @@ const Home = () => {
       image:
         "https://harrypottershop.co.uk/cdn/shop/files/Wand_static_card_large.jpg?v=1649173708",
       title: "Wand Shop",
-      link:"/wandshop"
+      link:"wandshop"
     },
     {
       image:
         "https://harrypottershop.co.uk/cdn/shop/files/Trunk_card_large.gif?v=1646994755",
       title: "Trunk Station",
-      link:"/trunkstation"
+      link:"trunkstation"
     },
     {
       image:
         "https://harrypottershop.co.uk/cdn/shop/files/Robe_card_large.gif?v=1646928736",
       title: "Clothing Collection",
-      link:"/clothingcollection"
+      link:"clothingcollection"
     },
     {
       image:
         "https://harrypottershop.co.uk/cdn/shop/files/Sweets_static_card_large.jpg?v=1649173724",
       title: "Sweet Trolley",
-      link:"/sweettrolley"
+      link:"sweettrolley"
 
     },
   ];
