@@ -30,7 +30,7 @@ const Products = () => {
   return (
     <>
     {loading && <p>Loading...</p>}
-    <div className="grid grid-cols-3 gap-x-3 gap-y-2 justify-items-center ">
+    <div className="grid grid-cols-3 gap-x-3 gap-y-2 justify-items-center mt-5">
       {products.map((product)=>(
 
       <ProductCard key={product.id} product={product}/>

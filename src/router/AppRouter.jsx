@@ -8,6 +8,7 @@ import WandShop from "../pages/WandShop";
 import TrunkStation from "../pages/TrunkStation";
 import Clothing from "../pages/Clothing";
 import SweetTrolley from "../pages/SweetTrolley";
+import ProductDetail from "../pages/ProductDetail";
 const AppRouter = () => {
   return (
     <>
@@ -15,13 +16,15 @@ const AppRouter = () => {
         <Route path="/" element={<Login />} />
 
         <Route path="/home" element={<PrivateRouter />}>
-          <Route path="" element={<Home/>}/>
-          <Route path="about" element={<About/>}/>
-          <Route path="products" element={<Products/>}/>
-        <Route path="wandshop" element={<WandShop/>}/>
-        <Route path="trunkstation" element={<TrunkStation/>}/>
-        <Route path="clothingcollection" element={<Clothing/>}/>
-        <Route path="sweettrolley" element={<SweetTrolley/>}/>
+          <Route path="" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="products" element={<Products />} />
+
+          <Route path="products/:id" element={<ProductDetail />} />
+          <Route path="wandshop" element={<WandShop />} />
+          <Route path="trunkstation" element={<TrunkStation />} />
+          <Route path="clothingcollection" element={<Clothing />} />
+          <Route path="sweettrolley" element={<SweetTrolley />} />
         </Route>
       </Routes>
     </>
