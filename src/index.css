@@ -11,6 +11,9 @@
     .btn{
         @apply text-white bg-[#AA8855] hover:bg-[#f1b964] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center  hover:ring-gray-300
     }
+    .product-container{
+        @apply grid grid-cols-3 gap-x-3 gap-y-2 justify-items-center mt-5
+    }
     
 }
 @media (max-width:400px){

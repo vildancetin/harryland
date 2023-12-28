@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import { useProductContext } from "../context/ProductProvider";
 
 const Products = () => {
+  // ? it went to productcontext
   // const [products, setProducts] = useState([]);
   // const [loading, setLoading] = useState(false);
   // const url = "https://65853139022766bcb8c80cf2.mockapi.io/harryland-products";
@@ -31,7 +32,7 @@ const {products,loading}=useProductContext()
   return (
     <>
     {loading && <p>Loading...</p>}
-    <div className="grid grid-cols-3 gap-x-3 gap-y-2 justify-items-center mt-5">
+    <div className="product-container">
       {products.map((product)=>(
 
       <ProductCard key={product.id} product={product}/>

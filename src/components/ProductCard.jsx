@@ -4,7 +4,7 @@ const ProductCard = ({ product }) => {
   const { thumbnail, name, price, id } = product;
   const navigate = useNavigate();
   return (
-    <div className="w-full max-w-[300px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative h-[450px] mb-5">
+    <div className="w-full max-w-[300px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative h-[450px] mb-5 cursor-pointer">
       <div
         className="border-[#AA8855] border-2 rounded-lg"
         onClick={() => navigate(`${id}`)}
