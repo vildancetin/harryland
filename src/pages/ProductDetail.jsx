@@ -21,28 +21,26 @@ const ProductDetail = () => {
     getDetail();
   }, []);
 
-  // State: sepet miktarı
   const [quantity, setQuantity] = useState(1);
 
-  // Sepete ekle fonksiyonu
+
   const addToCart = () => {
-    // Sepete ekleme işlemleri burada gerçekleştirilebilir
+
     console.log(`Sepete eklendi: ${quantity} adet `);
   };
 
   return (
     <div className="container mx-auto my-8 p-4 flex">
-      {/* Sol taraftaki resimler */}
+
       <div className="flex-1">
         <img
-          src={product.thumbnail} // Örnek resim URL'i
+          src={product.thumbnail} 
           alt={product.name}
           className="w-full h-auto mb-4"
         />
-        {/* Diğer iki resim için benzer şekilde ekleyebilirsiniz */}
+
       </div>
 
-      {/* Sağ taraftaki açıklama, fiyat ve miktar bilgisi */}
       <div className="flex-1 ml-8">
         <h2 className="text-2xl font-semibold mb-4">{product.name}</h2>
         <p className="text-gray-600 mb-4">{product.description}</p>
@@ -50,7 +48,7 @@ const ProductDetail = () => {
           ${product.price}
         </p>
 
-        {/* Miktar seçimi */}
+
         <div className="flex items-center mb-4">
           <label htmlFor="quantity" className="mr-2">
             Quantity:
@@ -64,7 +62,7 @@ const ProductDetail = () => {
           />
         </div>
 
-        {/* Sepete Ekle Butonu */}
+
         <button
           onClick={addToCart}
           className="btn"
