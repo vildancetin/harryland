@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useProductContext } from "../context/ProductProvider";
 import ProductCard from "../components/ProductCard";
 
