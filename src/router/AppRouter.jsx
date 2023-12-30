@@ -6,6 +6,7 @@ import PrivateRouter from "./PrivateRouter";
 import About from "../pages/About";
 import ProductDetail from "../pages/ProductDetail";
 import HomeCardInfo from "../pages/HomeCardInfo";
+import ShoppingCart from "../pages/ShoppingCart";
 const AppRouter = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const AppRouter = () => {
           <Route path="trunkstation" element={<HomeCardInfo />} />
           <Route path="clothingcollection" element={<HomeCardInfo />} />
           <Route path="sweettrolley" element={<HomeCardInfo />} />
+          <Route path="shoppingcart" element={<ShoppingCart />} />
         </Route>
       </Routes>
     </>
