@@ -59,18 +59,22 @@ const AddToCart = ({ closeCart }) => {
 
               <div className="flex flex-1 items-center justify-end gap-2">
                 <form>
-                  <label htmlFor="Line1Qty" className="sr-only">
-                    {" "}
-                    Quantity{" "}
-                  </label>
+                <div className="flex items-center rounded border border-gray-200">
+    <button type="button" className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75">
+      -
+    </button>
 
-                  <input
-                    type="number"
-                    min="1"
-                    value="1"
-                    id="Line1Qty"
-                    className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                  />
+    <input
+      type="number"
+      id="Quantity"
+      value="1"
+      className="h-10 w-10 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+    />
+
+    <button type="button" className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75">
+      +
+    </button>
+  </div>
                 </form>
 
                 <button className="text-gray-600 transition hover:text-red-600">
@@ -101,7 +105,7 @@ const AddToCart = ({ closeCart }) => {
               onClick={closeCart}
               className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"
             >
-              View my cart (2)
+              View my cart
             </Link>
 
             <a
