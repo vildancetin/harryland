@@ -184,7 +184,7 @@ const AddToCart = ({ closeCart }) => {
               </li>
             ))}
           </ul>
-
+            <span className="w-full h-1 bg-gray-600 block"></span>
           <div className="space-y-4 text-center">
             <Link
               to={"shoppingcart"}

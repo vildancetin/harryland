@@ -1,4 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
+import { showAddproduct, checkoutCart } from "../helper/toastHelpers";
+import { ToastContainer } from "react-toastify";
 
 const ProductCard = ({ product }) => {
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
@@ -12,7 +14,7 @@ const ProductCard = ({ product }) => {
     image: thumbnail,
   };
   const postToCart = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await fetch(postApiUrl, {
         method: "POST",
@@ -21,7 +23,7 @@ const ProductCard = ({ product }) => {
         },
         body: JSON.stringify(postData),
       });
-
+      showAddproduct();
       const result = await response.json();
       console.log("Success:", result);
     } catch (error) {
@@ -56,6 +58,7 @@ const ProductCard = ({ product }) => {
             <Link to="/" className="btn" onClick={postToCart}>
               Add to cart
             </Link>
+            
           </div>
         </div>
       </div>
