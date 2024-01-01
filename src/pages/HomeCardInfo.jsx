@@ -11,7 +11,7 @@ const HomeCardInfo = () => {
     <div className="product-container">
       <>
         {filtered.map((item) => (
-          <ProductCard product={item} />
+          <ProductCard product={item} key={item.id} />
         ))}
       </>
     </div>

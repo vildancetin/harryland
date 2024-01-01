@@ -1,8 +1,34 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
   const { thumbnail, name, price, id } = product;
   const navigate = useNavigate();
+  const postData = {
+    id: id,
+    price: price,
+    name: name,
+    quantity: 1,
+    image: thumbnail,
+  };
+  const postToCart = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await fetch(postApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      });
+
+      const result = await response.json();
+      console.log("Success:", result);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
   return (
     <div className="w-full max-w-[300px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative h-[450px] mb-5 cursor-pointer">
       <div
@@ -27,10 +53,7 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
           <div className="">
-            <Link
-              to="/"
-              className="btn"
-            >
+            <Link to="/" className="btn" onClick={postToCart}>
               Add to cart
             </Link>
           </div>
