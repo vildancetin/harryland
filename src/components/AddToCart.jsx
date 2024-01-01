@@ -3,7 +3,42 @@ import { Link } from "react-router-dom";
 const AddToCart = ({ closeCart }) => {
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
   const [data, setData] = useState([]);
+  // const [stock, setStock] = useState(1);
+  // const updatedData = {
+  //   quantity: stock,
+  // };
 
+  const plusUpdate = async (id, stock) => {
+    await updateData(id, stock);
+    await getData();
+    // setStock(stock+1)
+  };
+  const minussUpdate = async (id, stock) => {
+    await updateData(id, stock);
+    await getData();
+    // setStock(stock-1)
+  };
+
+  const updateData = async (id, stock) => {
+    try {
+      const response = await fetch(`${postApiUrl}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ quantity: stock }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Transaction failed ");
+      }
+
+      const data = await response.json();
+      console.log("Güncelleme işlemi başarılı:", data);
+    } catch (error) {
+      console.error("Hata oluştu:", error.message);
+    }
+  };
   const getData = async () => {
     try {
       const res = await fetch(postApiUrl);
@@ -16,31 +51,31 @@ const AddToCart = ({ closeCart }) => {
       console.log("Error:", error);
     }
   };
-
-  const handleDelete= async(id)=>{
-   await deleteData(id)
-   await getData()
-  }
-  const deleteData=async(id)=>{
+  const handleDelete = async (id) => {
+    await deleteData(id);
+    await getData();
+  };
+  const deleteData = async (id) => {
     try {
       const response = await fetch(`${postApiUrl}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-        }
-      })
-      if(!response.status){
-        throw new Error("Delete isn't successful")
+        },
+      });
+      if (!response.status) {
+        throw new Error("Delete isn't successful");
       }
-      const data=await response.json()
-      console.log(data)
+      const data = await response.json();
+      console.log(data);
     } catch (error) {
       console.log("Error:", error.message);
     }
-  }
+  };
+
   useEffect(() => {
-    getData();
-  }, []);
+   getData();
+  }, [data]);
 
   return (
     <div className="z-[1000]  fixed top-2 right-2">
@@ -88,7 +123,7 @@ const AddToCart = ({ closeCart }) => {
                   <dl className="mt-0.5 space-y-px text-[13px] text-gray-600">
                     <div>
                       <dt className="inline pr-3">Price:</dt>
-                      <dd className="inline">$ {item.price}</dd>
+                      <dd className="inline">$ {item.price*item.quantity}</dd>
                     </div>
                   </dl>
                 </div>
@@ -99,6 +134,11 @@ const AddToCart = ({ closeCart }) => {
                       <button
                         type="button"
                         className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                        onClick={
+                          item.quantity > 0
+                            ? () => minussUpdate(item.id, item.quantity - 1)
+                            : () => handleDelete(item.id)
+                        }
                       >
                         -
                       </button>
@@ -113,13 +153,17 @@ const AddToCart = ({ closeCart }) => {
                       <button
                         type="button"
                         className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                        onClick={() => plusUpdate(item.id, item.quantity + 1)}
                       >
                         +
                       </button>
                     </div>
                   </form>
 
-                  <button className="text-gray-600 transition hover:text-red-600" onClick={()=>handleDelete(item.id)}>
+                  <button
+                    className="text-gray-600 transition hover:text-red-600"
+                    onClick={() => handleDelete(item.id)}
+                  >
                     <span className="sr-only">Remove item</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -157,12 +201,7 @@ const AddToCart = ({ closeCart }) => {
               Checkout
             </a>
 
-            <a
-              href="#"
-              className="inline-block text-sm text-gray-500 underline underline-offset-4 transition hover:text-gray-600"
-            >
-              Continue shopping
-            </a>
+        
           </div>
         </div>
       </div>
