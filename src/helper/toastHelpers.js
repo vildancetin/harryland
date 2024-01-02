@@ -1,28 +1,40 @@
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
-export const showAddproduct = () => {
-  toast.success("Product added your cart!", {
+export const succesfully = (msg) => {
+  toast.success(msg, {
     position: "top-right",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
+    backgroundColor:"#4B5563"
   });
 };
-export const checkoutCart = () => {
-  toast.success("Your order has been taken", {
+export const error = (msg) => {
+  toast.error(msg, {
     position: "top-right",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
+  });
+};
+export const warning = (msg) => {
+  toast.warn(msg, {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
   });
 };

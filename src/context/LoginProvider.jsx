@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { succesfully,warning } from "../helper/toastHelpers";
 const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
@@ -12,6 +12,7 @@ const LoginProvider = ({ children }) => {
 //   ? after login navigate to home page
   const login = (userInfo) => {
     setUser(userInfo);
+    succesfully("Login succesfully ...")
     setTimeout(() => {
       
       navigate("/home");
@@ -23,6 +24,7 @@ const LoginProvider = ({ children }) => {
   }, [user]);
 // ? logout end of the 1s
   const logout=()=>{
+    warning("You logout!")
     setTimeout(() => {
         setUser("")
     }, 1000);

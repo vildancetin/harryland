@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { warning,error, succesfully } from "../helper/toastHelpers";
 const AddToCart = ({ closeCart }) => {
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
   const [data, setData] = useState([]);
@@ -30,9 +31,10 @@ const AddToCart = ({ closeCart }) => {
       });
 
       if (!response.ok) {
+        error("Too many request,try again!")
         throw new Error("Transaction failed ");
       }
-
+      succesfully("Quantity changed!")
       const data = await response.json();
       console.log("Güncelleme işlemi başarılı:", data);
     } catch (error) {
@@ -64,8 +66,10 @@ const AddToCart = ({ closeCart }) => {
         },
       });
       if (!response.status) {
+        error("Try again something went wrong!")
         throw new Error("Delete isn't successful");
       }
+      succesfully("Deleted succesfully!")
       const data = await response.json();
       console.log(data);
     } catch (error) {
@@ -80,7 +84,7 @@ const AddToCart = ({ closeCart }) => {
   return (
     <div className="z-[1000]  fixed top-2 right-2">
       <div
-        className="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
+        className="relative w-screen max-w-md border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8 max-h-[80vh] overflow-y-auto"
         aria-modal="true"
         role="dialog"
         tabIndex="-1"
@@ -110,7 +114,7 @@ const AddToCart = ({ closeCart }) => {
         <div className="mt-4 space-y-6">
           <ul className="space-y-4">
             {data.map((item) => (
-              <li className="flex items-center gap-4" key={item.id}>
+              <li className="flex items-center gap-4 w-full" key={item.id}>
                 <img
                   src={item.image}
                   alt=""

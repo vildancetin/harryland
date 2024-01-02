@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { showAddproduct, checkoutCart } from "../helper/toastHelpers";
-import { ToastContainer } from "react-toastify";
+import { succesfully,error } from "../helper/toastHelpers";
 
 const ProductCard = ({ product }) => {
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
@@ -23,7 +22,11 @@ const ProductCard = ({ product }) => {
         },
         body: JSON.stringify(postData),
       });
-      showAddproduct();
+      if(!response.status){
+        error("Something went wrong!")
+        throw new Error("Somethings went wrong!")
+      }
+      succesfully("Product added your cart!");
       const result = await response.json();
       console.log("Success:", result);
     } catch (error) {
