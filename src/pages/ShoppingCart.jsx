@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { succesfully } from "../helper/toastHelpers";
 const ShoppingCart = () => {
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
   const [data, setData] = useState([]);
@@ -21,6 +21,7 @@ const ShoppingCart = () => {
   }, [data]);
   const checkout=()=>{
     setData([])
+    succesfully("Your order is ready!")
   }
   return (
     <div>
