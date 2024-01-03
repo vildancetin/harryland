@@ -31,7 +31,7 @@ const {products,loading}=useProductContext()
   return (
     <>
     {loading && <p>Loading...</p>}
-    <div className="product-container sm:grid-cols-2">
+    <div className="product-container sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
       {products.map((product)=>(
 
       <ProductCard key={product.id} product={product}/>

@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div>
+    <div className="2xl:w-full">
       <div className="relative">
         <img
           src="https://images.ctfassets.net/usf1vwtuqyxm/2phT56DSucuUqU6Icm6mCe/79c7ad7bca59b0626fe4e2e80d188ca5/HogwartsCastle_WB_F4_HogwartsThroughTheTrees_Illust_100615_Land.jpg?w=1440&fm=webp&q=70"

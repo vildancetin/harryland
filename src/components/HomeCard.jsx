@@ -5,7 +5,7 @@ const HomeCard = ({image,title,link,category}) => {
     
 
 <div className="max-w-[220px]  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700
-relative flex slice maxw">
+relative flex slice maxw 2xl:max-w-[500px]">
     <Link to={link} state={{category}}>
         <img className="rounded-t-lg" src={image} alt="" />
     </Link>

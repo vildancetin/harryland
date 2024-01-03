@@ -34,7 +34,8 @@ const Slider = () => {
                   <img
                     src={slide}
                     alt="image"
-                    className="w-full h-[350px] object-contain"
+                    className="w-full h-[350px] object-contain lg:h-[500px] xl:h-[770px]
+                    2xl:h-full"
                   />
                 </div>
             ))}
