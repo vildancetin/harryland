@@ -35,7 +35,7 @@ const ShoppingCart = () => {
                       </p>
                     </div>
                     <form>
-                      <div className="flex items-center rounded border border-gray-200 ">
+                      <div className="flex items-center rounded border border-gray-200 cart-align">
                         <button
                         onClick={()=>minussUpdate(product.id,product.quantity-1)}
                           type="button"

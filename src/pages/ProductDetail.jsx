@@ -36,8 +36,8 @@ const ProductDetail = () => {
       {load ? (
         <p>Loading .... </p>
       ) : (
-        <div className="container mx-auto my-8 p-4 flex">
-          <div className="flex-1">
+        <div className="container mx-auto my-8 p-4 flex xs">
+          <div className="flex-1 ">
             <img
               src={product.thumbnail}
               alt={product.name}
