@@ -14,6 +14,9 @@
     .product-container{
         @apply grid grid-cols-3 gap-x-3 gap-y-2 justify-items-center mt-5
     }
+    .active-link{
+        @apply text-[#AA8855]
+    }
     
 }
 @media (max-width:400px){

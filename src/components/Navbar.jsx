@@ -1,11 +1,12 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useLogin } from "../context/LoginProvider";
 import AddToCart from "./AddToCart";
 import { useState } from "react";
 const Navbar = () => {
   const { logout } = useLogin();
-
+  const location=useLocation()
+  console.log(location.pathname)
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const openCart = () => {
@@ -19,12 +20,12 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link to="/home" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={logo} className="h-12" alt="Flowbite Logo" />
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
             MAGIC WORLD
           </span>
-        </a>
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -51,34 +52,34 @@ const Navbar = () => {
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
+            <li className="bg-[#AA8855] p-2 rounded-lg">
               <NavLink
                 to="/home"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
+                className={`block py-2 px-3 text-gray-900  rounded  md:bg-transparent  md:p-0 dark:text-white hover:text-white  ${location.pathname==="/home" ? "text-white scale-105" : ""}`}
+
               >
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className="bg-[#AA8855] p-2 rounded-lg">
               <NavLink
                 to="about"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={`block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-white md:p-0 dark:text-white md:dark:hover:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${location.pathname==="/home/about" ? "text-white scale-105" : ""}`}
               >
                 About
               </NavLink>
             </li>
-            <li>
+            <li className="bg-[#AA8855] p-2 rounded-lg">
               <NavLink
                 to="products"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={`block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-white hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${location.pathname==="/home/products" ? "text-white scale-105" : ""}` }
               >
                 Products
               </NavLink>
             </li>
-            <li>
+            <li className="bg-[#AA8855] p-2 rounded-lg">
               <Link
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 onClick={logout}
               >
                 Logout
