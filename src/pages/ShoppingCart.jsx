@@ -1,6 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { succesfully } from "../helper/toastHelpers";
+import { error, succesfully } from "../helper/toastHelpers";
+
 const ShoppingCart = () => {
+  const plusUpdate = async (id, stock) => {
+    await updateData(id, stock);
+    await getData();
+    // setStock(stock+1)
+  };
+  const minussUpdate = async (id, stock) => {
+    await updateData(id, stock);
+    await getData();
+    // setStock(stock-1)
+  };
+
+  const updateData = async (id, stock) => {
+    try {
+      const response = await fetch(`${postApiUrl}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ quantity: stock }),
+      });
+
+      if (!response.ok) {
+        error("Too many request,try again!")
+        throw new Error("Transaction failed ");
+      }
+      succesfully("Quantity changed!")
+      const data = await response.json();
+      console.log("Güncelleme işlemi başarılı:", data);
+    } catch (error) {
+      console.error("Hata oluştu:", error.message);
+    }
+  };
+  // const getData = async () => {
+  //   try {
+  //     const res = await fetch(postApiUrl);
+  //     const data = await res.json();
+  //     if (!res.status) {
+  //       throw new Error("somethings went wrong");
+  //     }
+  //     return setData(data);
+  //   } catch (error) {
+  //     console.log("Error:", error);
+  //   }
+  // };
+
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
   const [data, setData] = useState([]);
   const total=data.reduce((acc, val) => acc + val.quantity * val.price, 0)
@@ -19,6 +65,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     getData();
   }, [data]);
+
   const checkout=()=>{
     setData([])
     succesfully("Your order is ready!")
@@ -49,6 +96,7 @@ const ShoppingCart = () => {
                     <form>
                       <div className="flex items-center rounded border border-gray-200 ">
                         <button
+                        onClick={()=>minussUpdate(product.id,product.quantity-1)}
                           type="button"
                           className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75 hover:bg-[#AA8855] font-bold border-[#AA8855] border"
                         >
@@ -63,6 +111,8 @@ const ShoppingCart = () => {
                         />
 
                         <button
+                        onClick={()=>plusUpdate(product.id,product.quantity+1)}
+
                           type="button"
                           className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75 hover:bg-[#AA8855] font-bold border-[#AA8855] border"
                         >
