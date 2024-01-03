@@ -1,13 +1,48 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { error, succesfully } from "../helper/toastHelpers";
 
 const ProductDetail = () => {
+  // ? constant variables
   const { id } = useParams();
   const [product, setProduct] = useState("");
   const [load, setLoad] = useState(false);
-  console.log(id);
-
+  const [quantity, setQuantity] = useState(1);
+  // ? urls
+  const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
   const url = "https://65853139022766bcb8c80cf2.mockapi.io/harryland-products";
+  console.log(product);
+  // ? destructuring
+  const { name, price, thumbnail } = product;
+  const postData = {
+    id: id,
+    price: price,
+    name: name,
+    quantity: quantity,
+    image: thumbnail,
+  };
+  const postToCart = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(postApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      });
+      if (!response.status) {
+        error("Something went wrong!");
+        throw new Error("Somethings went wrong!");
+      }
+      succesfully("Product added your cart!");
+      const result = await response.json();
+      console.log("Success:", result);
+      setQuantity(0)
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   const getDetail = () => {
     setLoad(true);
@@ -21,15 +56,10 @@ const ProductDetail = () => {
       setLoad(false);
     }
   };
+
   useEffect(() => {
     getDetail();
   }, []);
-
-  const [quantity, setQuantity] = useState(1);
-
-  const addToCart = () => {
-    console.log(`Sepete eklendi: ${quantity} adet `);
-  };
 
   return (
     <>
@@ -63,7 +93,7 @@ const ProductDetail = () => {
               />
             </div>
 
-            <button onClick={addToCart} className="btn">
+            <button onClick={postToCart} className="btn">
               Add to Cart
             </button>
           </div>
