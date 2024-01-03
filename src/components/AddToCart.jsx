@@ -1,58 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { warning,error, succesfully } from "../helper/toastHelpers";
+import { useShoppingCart } from "../context/ShoppinCartProvider";
 const AddToCart = ({ closeCart }) => {
+
+  const {minussUpdate,plusUpdate,data,getData}=useShoppingCart()
+
   const postApiUrl = "https://6592c715bb1297071990075e.mockapi.io/harry-cart";
-  const [data, setData] = useState([]);
-  // const [stock, setStock] = useState(1);
-  // const updatedData = {
-  //   quantity: stock,
-  // };
 
-  const plusUpdate = async (id, stock) => {
-    await updateData(id, stock);
-    await getData();
-    // setStock(stock+1)
-  };
-  const minussUpdate = async (id, stock) => {
-    await updateData(id, stock);
-    await getData();
-    // setStock(stock-1)
-  };
-
-  const updateData = async (id, stock) => {
-    try {
-      const response = await fetch(`${postApiUrl}/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ quantity: stock }),
-      });
-
-      if (!response.ok) {
-        error("Too many request,try again!")
-        throw new Error("Transaction failed ");
-      }
-      succesfully("Quantity changed!")
-      const data = await response.json();
-      console.log("Güncelleme işlemi başarılı:", data);
-    } catch (error) {
-      console.error("Hata oluştu:", error.message);
-    }
-  };
-  const getData = async () => {
-    try {
-      const res = await fetch(postApiUrl);
-      const data = await res.json();
-      if (!res.status) {
-        throw new Error("somethings went wrong");
-      }
-      return setData(data);
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
   const handleDelete = async (id) => {
     await deleteData(id);
     await getData();
@@ -77,9 +32,9 @@ const AddToCart = ({ closeCart }) => {
     }
   };
 
-  useEffect(() => {
-   getData();
-  }, [data]);
+  // useEffect(() => {
+  //  getData();
+  // }, [data]);
 
   return (
     <div className="z-[1000]  fixed top-2 right-2">
@@ -139,9 +94,9 @@ const AddToCart = ({ closeCart }) => {
                         type="button"
                         className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
                         onClick={
-                          item.quantity > 0
-                            ? () => minussUpdate(item.id, item.quantity - 1)
-                            : () => handleDelete(item.id)
+                          item.quantity === 0
+                            ? () => handleDelete(item.id)
+                            : () => minussUpdate(item.id, item.quantity - 1)
                         }
                       >
                         -

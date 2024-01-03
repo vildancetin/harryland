@@ -5,15 +5,16 @@ import ProductCard from "../components/ProductCard";
 const HomeCardInfo = () => {
   const { products } = useProductContext();
   const location = useLocation();
-  const category = location.state.category;
+  const category = location.state?.category;
+  console.log(category)
   const filtered = products.filter((product) => product.category === category);
   return (
     <div className="product-container">
-      <>
+
         {filtered.map((item) => (
           <ProductCard product={item} key={item.id} />
         ))}
-      </>
+
     </div>
   );
 };

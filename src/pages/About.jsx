@@ -6,7 +6,7 @@ const About = () => {
           src="https://images.ctfassets.net/usf1vwtuqyxm/2phT56DSucuUqU6Icm6mCe/79c7ad7bca59b0626fe4e2e80d188ca5/HogwartsCastle_WB_F4_HogwartsThroughTheTrees_Illust_100615_Land.jpg?w=1440&fm=webp&q=70"
           alt="castle"
         />
-        <div className="absolute top-1/3 text-white left-20 w-1/3">
+        <div className="absolute top-1/3 text-white left-20 w-1/3 small-font">
           <p className="text-3xl font-extrabold tracking-wider">FEATURE</p>
           <p className="text-2xl capitalize font-bold leading-8">Behind the scenes: Designing Hogwarts castle</p>
         </div>

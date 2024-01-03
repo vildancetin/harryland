@@ -28,6 +28,14 @@
     .maxw{
         min-width: 300px;
     }
+    .small-font{
+        width: 70%;
+        left: 1rem;
+        top: 1rem;
+    }
+    .small-font p{
+        font-size: 1rem;
+    }
 
 }
 @media (min-width: 401px) and (max-width: 650px) {
