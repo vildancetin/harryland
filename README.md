@@ -1,6 +1,7 @@
 # HarryLand Magic World
-## Get Started
+## Outline
 
+## Get Started
 This project addresses a broad subject, with the most important aspects being context and routes. The main features include the requirement for users to log in or sign up to access content. Following that, the home page features a slider and categories. The about page provides information, and the products page serves all available products. There is also a button to add items to your shopping cart, and you can adjust the quantity.
 
 Two different mock APIs have been created for data—one for carts and the other for products. All images and content have been sourced from [harrypottershop](https://harrypottershop.co.uk/).
@@ -78,6 +79,6 @@ const ShoppinCartProvider = ({ children }) => {
 To complete the process and proceed to the final shopping cart page, you should navigate to the next step.
 
 ###### However, sometimes it doesn't work successfully due to the occurrence of "too many requests." This issue may arise with the mock API, leading to occasional failures in fetching information.
-
-
+## Live
+[Link](https://harryland.vercel.app/)
 
