@@ -1,5 +1,6 @@
 # HarryLand Magic World
 ## Outline
+![harryland](https://github.com/vildancetin/harryland/assets/75564722/6c97aace-b850-4fb1-8368-5d5753835f0a)
 
 ## Get Started
 This project addresses a broad subject, with the most important aspects being context and routes. The main features include the requirement for users to log in or sign up to access content. Following that, the home page features a slider and categories. The about page provides information, and the products page serves all available products. There is also a button to add items to your shopping cart, and you can adjust the quantity.
