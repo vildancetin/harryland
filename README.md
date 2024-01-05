@@ -35,7 +35,7 @@ The page has been listed, and paths have been assigned for each component.Exampl
 ```
 ## Home Page
 This page features a slider and a card list categorized by product types.
-## HoemCardInfo
+## HomeCardInfo
 When you click on a category from the home page, it navigates to a page that displays filtered products. To achieve this, a specific state is defined in the `HomeCard` component. When the link directs to another page, it captures the category information. In the `HomePageInfo` component, the category is retrieved using `useLocation()` and filtered accordingly using this prop.
 #### Send state
 ```javascript
